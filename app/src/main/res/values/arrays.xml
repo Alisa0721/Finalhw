@@ -1,0 +1,9 @@
+<resources>
+    <string-array name="choices">
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+    </string-array>
+</resources>

@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_mon"
+        android:title="New"
+        android:icon="@drawable/breakfast" />
+    <item
+        android:id="@+id/menu_tue"
+        android:title="New"
+        android:icon="@drawable/lunch" />
+    <item
+        android:id="@+id/menu_wen"
+        android:title="New"
+        android:icon="@drawable/sleep" />
+    <item
+        android:id="@+id/menu_thu"
+        android:title="New"
+        android:icon="@drawable/breakfast" />
+    <item
+        android:id="@+id/menu_fri"
+        android:title="New"
+        android:icon="@drawable/lunch" />
+</menu>
