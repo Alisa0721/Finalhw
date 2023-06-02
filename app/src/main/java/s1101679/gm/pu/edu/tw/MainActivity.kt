@@ -13,11 +13,8 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +45,7 @@ class MainActivity : AppCompatActivity() {
                 // 不需要執行任何操作
             }
         }.start()
+
         // 創建一個ArrayAdapter作為下拉式菜單的適配器
         val adapter = ArrayAdapter.createFromResource(
             this,
@@ -64,31 +62,21 @@ class MainActivity : AppCompatActivity() {
         // 設置選項選擇事件監聽器
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>?,
+                parent: AdapterView<*>,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
-                val selectedOption = parent?.getItemAtPosition(position).toString()
+                val selectedOption = parent.getItemAtPosition(position).toString()
                 handleSelectedOption(selectedOption)
-
-                if (selectedOption == "星期一") {
-                    // 跳转到图片页面1
-                    val intent = Intent(this@MainActivity, ImageActivity1::class.java)
-                    ContextCompat.startActivity(this@MainActivity, intent, null)
-                } else if (selectedOption == "星期二") {
-                    // 跳转到图片页面2
-                    val intent = Intent(this@MainActivity, ImageActivity2::class.java)
-                    ContextCompat.startActivity(this@MainActivity, intent, null)
-                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // 如果沒有選擇任何選項，不執行任何操作
             }
         }
-
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
@@ -97,34 +85,16 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_mon -> {
+                // 创建一个 Intent 对象，用于跳转到 NewActivity
                 val intent = Intent(this, NewActivity::class.java)
                 startActivity(intent)
                 return true
             }
-            R.id.menu_tue -> {
-                val intent = Intent(this, NewActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            R.id.menu_wen -> {
-                val intent = Intent(this, NewActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            R.id.menu_thu -> {
-                val intent = Intent(this, NewActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            R.id.menu_fri -> {
-                val intent = Intent(this, NewActivity::class.java)
-                startActivity(intent)
-                return true
-            }
+            // 其他菜单项的处理逻辑
+            // ...
         }
         return super.onOptionsItemSelected(item)
     }
-
 
     private fun hideImageView() {
         activityImageView.visibility = View.GONE
@@ -142,40 +112,30 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 根據選擇的選項顯示相應的圖片
+        // 根據選擇的選項跳轉至相應的頁面
         when (selectedOption) {
-            // 添加你的選項與對應的圖片處理邏輯
-            "Option 1" -> {
-                // 顯示相應的圖片
-                activityImageView.setImageResource(R.drawable.breakfast)
-                showImageView()
+            "星期一" -> {
+                val intent = Intent(this@MainActivity, ImageActivity1::class.java)
+                startActivity(intent)
             }
-            "Option 2" -> {
-                // 顯示相應的圖片
-                activityImageView.setImageResource(R.drawable.lunch)
-                showImageView()
+            "星期二" -> {
+                val intent = Intent(this@MainActivity, ImageActivity2::class.java)
+                startActivity(intent)
             }
-            "Option 3" -> {
-                // 顯示相應的圖片
-                activityImageView.setImageResource(R.drawable.sleep)
-                showImageView()
+            "星期三" -> {
+                val intent = Intent(this@MainActivity, ImageActivity3::class.java)
+                startActivity(intent)
             }
-            "Option 4" -> {
-                // 顯示相應的圖片
-                activityImageView.setImageResource(R.drawable.breakfast)
-                showImageView()
+            "星期四" -> {
+                val intent = Intent(this@MainActivity, ImageActivity4::class.java)
+                startActivity(intent)
             }
-            "Option 5" -> {
-                // 顯示相應的圖片
-                activityImageView.setImageResource(R.drawable.lunch)
-                showImageView()
-            }
-            else -> {
-                hideImageView()
+            "星期五" -> {
+                val intent = Intent(this@MainActivity, ImageActivity5::class.java)
+                startActivity(intent)
             }
         }
     }
-
-
 
     private fun updateCurrentTime() {
         val calendar: Calendar = Calendar.getInstance()
