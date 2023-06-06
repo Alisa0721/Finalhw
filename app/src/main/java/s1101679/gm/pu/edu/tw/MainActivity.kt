@@ -82,19 +82,6 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_mon -> {
-                // 创建一个 Intent 对象，用于跳转到 NewActivity
-                val intent = Intent(this, NewActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            // 其他菜单项的处理逻辑
-            // ...
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     private fun hideImageView() {
         activityImageView.visibility = View.GONE
@@ -110,10 +97,13 @@ class MainActivity : AppCompatActivity() {
             hideImageView()
             return
         }
-
         // 根據選擇的選項顯示相應的圖片
         // 根據選擇的選項跳轉至相應的頁面
         when (selectedOption) {
+            "主頁" -> {
+                val intent = Intent(this@MainActivity, MainActivitymain::class.java)
+                startActivity(intent)
+            }
             "星期一" -> {
                 val intent = Intent(this@MainActivity, ImageActivity1::class.java)
                 startActivity(intent)

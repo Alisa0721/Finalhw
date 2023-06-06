@@ -1,5 +1,6 @@
 <resources>
     <string-array name="choices">
+        <item>主頁</item>
         <item>星期一</item>
         <item>星期二</item>
         <item>星期三</item>
